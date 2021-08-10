@@ -1,0 +1,246 @@
+:root{
+    --main-bg-color: #eeffff;
+    --border-color : #0288d147;
+    --container-width : 500px
+}
+*{    
+    padding: 0;
+    margin: 0;
+}
+body, html{
+    font-family: system-ui;
+    background-color: var(--main-bg-color);
+    
+    height: 100vh;
+}
+
+body,.drop-zone,.progress-container,.input-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-container{
+    background-color: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0px 20px 20px 0px #00000017;
+}
+
+.drop-zone{
+    width: 500px;
+    min-height: 200px;
+    border: 2px dashed var(--border-color);
+    margin: 30px;
+    border-radius: 10px;
+
+    flex-direction: column;
+}
+
+.icon-container{
+    width: 80px;
+    height: 100px;
+    position: relative;
+}
+
+.icon-container img{
+    position: absolute;
+    transform-origin: bottom;
+    transition: all 0.3s ease-in-out;
+}
+
+.icon-container .center {
+    z-index: 1;
+}
+
+.icon-container .left,.icon-container .right{
+    filter: grayscale(.5);
+    transform:scale(.9);
+}
+
+.dragged.drop-zone{
+    background-color: var(--main-bg-color);
+    border-color: #2196f3;
+    transition: all 0.3s ease;
+}
+
+.dragged .icon-container .right{
+    transform: rotate(10deg) translateX(20px) scale(.9);
+}
+
+.dragged .icon-container .left{
+    transform: rotate(-10deg) translateX(-20px) scale(.9);
+}
+
+.dragged .icon-container .center{
+    transform: translateY(-5px);
+}
+
+.title{
+    font-size: 18px;
+}
+
+#browerBtn{
+    cursor: pointer;
+    color: #2196f3;
+}
+
+.show-progress-bar{
+    display: flex !important;
+}
+
+.progress-container{
+    display: none;
+    transition: all 0.3s ease;
+    width: var(--container-width);
+    height: 80px;
+    border: 2px solid var(--main-bg-color);
+    margin: 0 auto 20px auto;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+
+    justify-content: left;
+}
+
+.progress-container .bg-progress{
+    width: 0%;height: 100%;
+    background-color: var(--main-bg-color);
+    border-radius: 10px;
+}
+.progress-container .inner-container{
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.progress-container .inner-container .progress-title,
+.progress-container .inner-container  .percent-container,
+.progress-container .inner-container  .progress-bar{
+    margin-left: 10px;
+}
+
+.progress-container .inner-container > div{
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.progress-container .inner-container .progress-bar{
+    margin-top: 10px;
+    height: 3px;
+    width: 0%;
+    margin-left: 5px;
+    background-color: #2196f3;
+}
+
+.share-link-container{
+    display: none;
+    transform: all 0.3s ease;
+    text-align: center;
+    margin: 20px auto;
+}
+.share-link-container .expires-title{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.share-link-container .input-container{
+    width: var(--container-width);
+    border: 2px dashed var(--border-color);
+    margin: auto;
+}
+
+.share-link-container .input-container #fileURL{
+    width: 80%;
+    padding: 8px;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    color: gray;
+    text-align: center;
+}
+
+.share-link-container .email-container{
+    margin: 20px auto;
+    margin-bottom: 30px;
+}
+
+.share-link-container .email-container .email-title{
+    margin: 18px;
+    color: gray;
+    font-size: 18px;
+}
+
+.share-link-container .email-container .email-input-container{
+    
+    border: 5px solid var(--border-color);
+    border-radius: 10px;
+    max-width: 350px;
+    margin: auto;
+    padding: 10px 20px;
+
+}
+
+.share-link-container .form-input{
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.share-link-container .form-input .input-lable{
+    text-align: left;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.share-link-container .form-input .input{
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    outline: none;
+    text-align: center;
+    font-size: 18px;
+}
+
+#email-send-btn{
+    margin-top: 20px;
+    width: 50%;
+    padding: 10px 5px;
+    font-size: 18px;
+    color: gray;
+    background: var(--main-bg-color);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#copyBtn{
+    cursor: pointer;
+}
+
+.toast{
+    position: absolute;
+    bottom: 10%;
+    left: -50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #30a9f4;
+    color: white;
+    font-size: 18px;
+    box-shadow: 0px 20px 20px 0px #00000017;
+}
+
+
+@media screen and (max-width:400px) {
+    .upload-container{
+        width: 300px;
+        overflow: scroll;
+        padding: 20px;
+    }
+
+    .upload-container > div{
+        width: auto;
+        margin: auto;
+    }
+}
